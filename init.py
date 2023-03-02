@@ -12,8 +12,8 @@ class Init(object):
     uwsgi = False
     site_title = "pj40921"
     ip = "127.0.0.1"
-    dynamic_port = 9446
-    static_port = 8446
+    dynamic_port = 9447
+    static_port = 8447
     def __init__(self):
         # hope to create downloads and images directories　
         if not os.path.isdir(_curdir + "/downloads"):
