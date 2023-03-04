@@ -1,30 +1,29 @@
 <h1>About</h1>
-<p>CoppeliaSim 應用案例研究</p>
-<p style="padding-left: 30px;">利用電磁電樞線圈控制齒輪組齒的方法和裝置</p>
-<p style="padding-left: 30px;">Method and Apparatus for Control Gearset Teeth by Electromagnetic Armature Coil</p>
+<p>Solid Edge 與 Femap 在機械設計上的應用</p>
+<p>Application of Solid Edge and Femap in mechanical design</p>
+<p></p>
 <p>專題組員:</p>
 <p style="padding-left: 30px;">40923124</p>
-<p style="padding-left: 30px;">40923136</p>
+<p style="padding-left: 30px;"><a href="https://github.com/40923136-1/pj40921">40923136</a></p>
 <h1>40923136</h1>
-<p>w2 test 2</p><h2>為什麼(Why)</h2>
+<h2>為什麼(Why)</h2>
 <p>原本的齒輪變速器需要多顆齒輪才能做完全部轉速的換檔，這樣不僅會增加許多重量，對一部機器、交通工具需要擁有更強的結構與更大的動能才能支撐它，這相對的會耗費相當多的能源，而且在換檔的時候會有空窗期；現在我的專利就是要解決這些問題，只需要一顆齒輪、一些電磁鐵和一些磁浮列車的控制方程式即可解決。</p>
 <h2>結構(Structure)</h2>
 <p>依據"為甚麼"裡的需求，我們的零件有:</p>
-<p>一根軸(直徑0.005m，長度3m)</p>
-<p><img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084657.png" width="1920"/></p>
+<p>一根軸(直徑0.005m，長度3<img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084657.png" width="1920"/></p>
 <p><strong></strong>兩個外側齒輪<span>(直徑0.036m，孔直徑0.005m，厚度0.002m)</span></p>
 <p></p>
-<p><img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084616.png" width="1918"/></p>
-<p>兩個內側齒輪<span>(直徑0.036m，孔直徑0.005m，厚度0.002m)</span></p>
-<p><img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084642.png" width="1920"/></p>
-<p>兩個外殼<span>(直徑0.036m，孔直徑0.005m，厚度0.002m)</span></p>
+<p><img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084616.png" width="1918"/><img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084616.png" width="1918"/></p>
+<p>兩個內側齒輪<span>(直徑0.036m，孔直徑0.005m，厚度0.002m)<img alt="" height="1080" src="/images/螢幕擷取畫面_20230111_084642.png" width="1920"/></span>兩個外殼<span>(直徑0.036m，孔直徑0.005m，厚度0.002m)</span></p>
 <p><img alt="" height="1076" src="/images/螢幕擷取畫面_20230111_084549.png" width="1912"/></p>
 <p>兩個電磁鐵片<span>(直徑0.036m，孔直徑0.005m，厚度0.001m)</span></p>
-<p><img alt="" height="1080" src="/images/螢幕擷取畫面_20230112_074805.png" width="1918"/></p>
+<p><span><img alt="" height="1076" src="/images/螢幕擷取畫面_20230111_084549.png" width="1912"/></span></p>
 <p>兩個磁鐵片(直徑0.036m，孔直徑0.005m，厚度0.001m)</p>
-<h2>實際作動(Action in normal)</h2>
-<h2>有限元素分析(Finite Element Analysis)</h2>
+<p><img alt="" height="1076" src="/images/螢幕擷取畫面_20230111_084549.png" width="1912"/></p>
+<h2>實際作動(action)</h2>
+<p>每一次變速時，外殼上的電磁鐵會先統一變成與每一齒上的磁鐵相同的極性，讓外殼與齒分離，接著外殼上的每一格電磁鐵會做出與隔壁的電磁鐵相反的極性，並每秒變換一次極性，就像磁浮列車一樣，讓齒向前走，等到感知器感應到齒已經到達定位之後，便會使電磁鐵發出與磁鐵相反的極性，讓它固定；而撐大時，齒與齒之間產生的空隙由後面那個已經被平分成好幾等分的齒輪，利用旋轉時產生的離心力，將空隙補滿。<img alt="" height="944" src="/images/螢幕擷取畫面 2023-03-04 110031.png" width="1914"/></p>
 <h2>總結(finaliy)</h2>
+<p>我們以電腦程式控制這組齒輪，按照理論，是行得通的，雖然你可能會說，電磁鐵在居禮溫度以上，磁力會受影響，但是變速箱的工作溫度只有攝氏90度90度，與居禮溫度相差太多(每種材質的電磁鐵，居禮溫度會不一樣，但是都在400、500度以上)，所以不受影響。</p>
 <p><!-- ######################  editor1 結束 ###################### --></p>
 <p><!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
 <script type="text/python3">
@@ -386,7 +385,8 @@ tetris = button2(tetris_url)
 doc["tetris"].bind("click", tetris.do)
 ################################## tetris end
 </script>
-</p><h1>Brython</h1>
+</p>
+<h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China#Construction_details">ROC 國旗規格</a> <a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E6%97%97#%E8%A7%84%E6%A0%BC">PROC 國旗規格</a> <a href="https://en.wikipedia.org/wiki/Flag_of_the_United_States#Specifications">USA 國旗規格</a></p>
 <p><a href="https://gist.github.com/mdecourse/05930b1775b77293523b59b1bbb43e57">Gist Brython scripts</a></p>
 <p><a href="https://mde.tw/cp2021/content/%E8%A7%A3%E9%A1%8C%E7%B7%B4%E7%BF%92.html">解題練習</a></p>
