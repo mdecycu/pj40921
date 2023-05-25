@@ -1,9 +1,9 @@
 \documentclass[14pt,a4paper]{report}  %紙張設定
 \usepackage{xeCJK}%中文字體模組
-%\setCJKmainfont{標楷體} % 在 windows 設定中文字體 
-\setCJKmainfont{MoeStandardKai.ttf}
-%\newfontfamily\sectionef{Times New Roman} % 在 windows 設定英文字體
-\newfontfamily\sectionef{Nimbus Roman}
+\setCJKmainfont{標楷體} % 在 windows 設定中文字體 
+%\setCJKmainfont{MoeStandardKai.ttf}
+\newfontfamily\sectionef{Times New Roman} % 在 windows 設定英文字體
+%\newfontfamily\sectionef{Nimbus Roman}
 \usepackage{enumerate}
 \usepackage{amsmath,amssymb}%數學公式、符號
 \usepackage{amsfonts} %數學簍空的英文字
@@ -130,10 +130,11 @@ Application of reinforcement
     \hspace*{\fill} \\
     \fontsize{16pt}{2.5pt}\selectfont \makebox[12em][s]{中華民國一一二年}\hspace{2pt}
     \fontsize{16pt}{2.5pt}\selectfont\makebox[8em][s]{六月二十日}
-    \end{flushleft}
+    \end{flushleft}}
     \end{textblock}}
-    \par} %結束指定行距
-    \newpage
+    \end{textblock}}
+     \par} %結束指定行距
+     \newpage
 
 %=------------------------摘要-----------------------=%
 \input{abstract.tex}
