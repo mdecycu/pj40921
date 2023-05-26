@@ -16,36 +16,274 @@
 
 \newpage
 
-\subsection{啟動函數}
-啟動函數是設計類神經網路的關鍵部分，如果不使用啟動函數，神經元的計算只會有線性組合，這樣的類神經網路缺乏活性而且記憶性差；啟動函數能讓神經元計算呈現非線性，讓類神經網路因為計算的非線性而提高整個網路的活性和記憶性。\\
-以下介紹幾種較為常見的啟動函數及其特性：
-\begin{itemize}
-%=----------Sigmoid      Function----------=%
-\item Sigmoid Function(圖.\ref{SigmoidFunction})：\\
-輸出介於0到1之間，適用於二元分類，方程式具有非線性、可連續微分、且具有固定輸出範圍等特性，並可以讓類神經網路呈現非線性。
-$$\sigma(x)=\frac{1}{1+e^{-x}}$$
+\subsection{工程參照}
+工程參照是Solid Edge的一種特有功能，直覺來說就是快速建模，只需要選擇需要的模型形狀，再將數值一一打入，即使不用畫草圖也能迅速的將模型產生。\\
 
-%=----------SigmoidPrime Function----------=%
-SigmoidPrime Function(圖.\ref{SigmoidFunction}，紅色的)是從Sigmoid Function(圖.\ref{SigmoidFunction}，藍色)微分得來，以梯度運算的方式，可以減少梯度誤差，但也是造成梯度消失的主要原因，若要改善梯度消失需要搭配優化器使用，方程式如下:\\
-$$\sigma^{'}(x)=\sigma(x)[1-\sigma(x)]$$
+在工作列上的工具裡能很輕易的找到工程參照，點開有高達13項的模型提供選擇。\\
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[width=16cm]{SigmoidFunction}
-\caption{\Large SigmoidFunction}\label{SigmoidFunction}
+\includegraphics[width=16cm]{螢幕擷取畫面 2023-05-11 200432}
+\caption{\Large 開啟位置}\label{開啟位置}
 \end{center}
 \end{figure}
 \\
-%=----------Softmax Function----------=%
-\item Softmax：\\
-Softmax會計算每個事件分布的機率，適用多項目分類、其機率總合為1。以此專案為例，假設擊錘移動有向上移動、向下移動及不移動這三個決策選項，則這三個決策機率值總和為1。\\
-$$S(x)=\frac{e^{x_i}}{\sum^k_{j=1}e^{x_i}}$$
-%=----------Relu Function----------=%
-\item ReLU Function：\\
-ReLU Function方程式特性：若輸入值為負值，輸出值為0；若輸入值為正值，輸出則維持該輸入數值。ReLU計算方式簡單、收斂速度快，這是類神經網路最普遍拿來使用的啟動函數，因為可以解決梯度消散的問題，但須注意：起始值若設定到不易被激活範圍或是權重過渡所導致權重梯度為0就會造成神經元難以被激活。\\
-\end{itemize}
-$$f(x)=max(0,x)$$
-$$if , x<0 , f(x)=0$$
-$$else f(x)=x$$
+開啟(圖.\ref{開啟畫面}):\\
+
+每種模型的界面都大同小異，有各個尺寸的代號、參數調整，因為還能算出簡易的分析，所以也有支撐(固定)、負載與設定材質的功能，模型預覽的功能因只能做出較簡單的畫面變更，所以只有軸設計器與梁設計器有而已。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{軸設計器1}
+\caption{\Large 開啟畫面}\label{開啟畫面}
+\end{center}
+\end{figure}
+\\
+材質(圖.\ref{材質畫面}、圖.\ref{內建材質}):\\
+
+模型材質的更改，有提供常用的材料可以選擇，如果沒有需要的材料的話也能透過彈性模量(楊氏係數)、剛性模量及比值量來達成設定。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=8cm]{軸設計器6}
+\caption{\Large 材質畫面}\label{材質畫面}
+\includegraphics[width=8cm]{螢幕擷取畫面 2023-05-11 205001}
+\caption{\Large 內建材質}\label{內建材質}
+\end{center}
+\end{figure}
+\\
+
+分析結果(圖.\ref{分析結果畫面}):\\
+
+設定參數完成後，按下計算就能直接得到力的分析結果，各種力作用及平面都能自由調整來得到需要的數值。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{軸設計器7}
+\caption{\Large 分析結果畫面}\label{分析結果畫面}
+\end{center}
+\end{figure}
+\\
+
+以下介紹工程參照的各種設計器：
+\begin{itemize}
+		%=----------Sigmoid      Function----------=%
+	\item 軸設計器(圖.\ref{軸設計器})：\\
+		在做參數設計只需要打上想要的尺寸即可得到想要的模型，上面預覽所呈現的藍線部分就是對應到下面軸參數的數值，也能隨時改變剖面的類型，自由度非常的高，但須注意的是預覽部分並不會將各個剖面的類型顯現出來，所以預覽的畫面並非是建立出來的完整模型\\
+
+		支撐功能裡的支撐編號是預覽畫面中的藍色三角形，左邊的三角形是程式預設的固定邊，而右邊的三角形會根據單元編號的改變所移動，支撐編號只有1(預設固定邊)與2(單元編號)提供選擇\\
+
+		負載功能也有一些相較簡單的力能輸入，力的位置也會顯示在預覽畫面上，材質部分也有預設一些比較常用到的材料，如果沒有的話，也只要將需要的材料性質輸入進去即可\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{軸設計器2}
+		\caption{\Large 軸設計器}\label{軸設計器}
+		\end{center}
+		\end{figure}
+		\\
+		剖面選擇的數值是模型從左到右開始算的第幾個剖面(圖.\ref{剖面選擇})
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{00}
+		\caption{\Large 剖面選擇}\label{剖面選擇}
+		\end{center}
+		\end{figure}
+		\\
+		新增的功能就是在所選擇的剖面左/右邊新增新的剖面(圖.\ref{2.8})\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{00}
+		\caption{\Large 新增}\label{2.8}
+		\end{center}
+		\end{figure}
+		\\
+		計算結果(圖.\ref{2.9})
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{軸設計器7}
+		\caption{\Large 記算結果}\label{2.9}
+		\end{center}
+		\end{figure}
+		\\
+		模型建立(圖.\ref{2.10})
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{軸模型}
+		\caption{\Large 軸模型}\label{2.10}
+		\end{center}
+		\end{figure}
+		\\
+		
+\newpage
+
+	
+	\item 凸輪設計器(圖.\ref{2.11}) :\\
+		與軸設計器相同，一樣有著參數以及負載的數值可以輸入，上面畫面一樣是各數值所代表的部位，而在凸輪參數最下列還有一項周速的數值是不可調整的，是直接經由上列數值所計算出來的
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{凸輪1}
+		\caption{\Large 凸輪設計器}\label{2.11}
+		\end{center}
+		\end{figure}
+		\\
+		材質(圖.\ref{2.12})
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=8cm]{禿倫}
+		\caption{\Large 凸輪材質}\label{2.12}
+		\end{center}
+		\end{figure}
+		\\
+		計算結果(圖.\ref{2.13})\\
+		
+		點擊計算後會來到計算結果的頁面，左上畫面是左下角圖形選項的結果，有位移、速度、加速度和躍度提供選擇；而右上的圖形是設計參數計算出來的凸輪輪廓，藍色線是基圓紅色線則是凸輪的形狀；在來是段的選擇，總共有3段的選項，分別是1(0°~120°)、2(120°~240°)、3(240°~360°)
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{凸輪2}
+		\caption{\Large 凸輪計算結果}\label{2.13}
+		\end{center}
+		\end{figure}
+		\\
+		各段的設定也都是可以各別做調整的，右邊也會有一些常用的最大數值及時計算出來提供參考(圖.\ref{2.14}、圖.\ref{2.15}、圖.\ref{2.16})
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=10cm]{凸輪4}
+		\caption{\Large 凸輪0°-120°}\label{2.14}
+		\end{center}
+		\end{figure}
+		\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=10cm]{凸輪5}
+		\caption{\Large 凸輪120°-240°}\label{2.15}
+		\end{center}
+		\end{figure}
+		\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=10cm]{凸輪6}
+		\caption{\Large 凸輪240°-360°}\label{2.16}
+		\end{center}
+		\end{figure}
+		\\
+		模型建立(圖.\ref{2.17})
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{凸輪模型}
+		\caption{\Large 凸輪模型}\label{2.17}
+		\end{center}
+		\end{figure}
+		\\
+		
+\newpage
+	
+	\item 直齒輪設計器(圖.\ref{2.18}) :\\
+		開啟畫面一樣是分成3大部分，代號部位介紹、齒輪參數和計算參數
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{直齒輪1}
+		\caption{\Large 直齒輪設計器}\label{2.18}
+		\end{center}
+		\end{figure}
+		\\
+		選項(圖.\ref{2.19})\\
+		參數設計的輸入條件\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=10cm]{螢幕擷取畫面 2023-05-18 200646}
+		\caption{\Large 細部選項}\label{2.19}
+		\end{center}
+		\end{figure}
+		\\
+		計算結果(圖.\ref{2.20})\\
+		計算結果這邊因設計器的預設是設計一組齒輪的，所以結果會呈現兩顆齒輪聶合的基本資訊，也會有兩顆齒輪在運動時所產生的各向力作用，以及強度驗證的通過與否\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{直齒輪5}
+		\caption{\Large 直齒輪計算結果}\label{2.20}
+		\end{center}
+		\end{figure}
+		\\
+		係數(圖.\ref{2.21})\\
+		計算後結果的各項係數\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=8cm]{直齒輪6}
+		\caption{\Large 直齒輪計算結果係數}\label{2.21}
+		\end{center}
+		\end{figure}
+		\\
+		齒輪參數(圖.\ref{2.22})\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=8cm]{直齒輪7}
+		\caption{\Large 係數齒輪參數}\label{2.22}
+		\end{center}
+		\end{figure}
+		\\
+		計算出的幾何參數(圖.\ref{2.23})\\
+		各項設定計算出來的幾何參數，也是齒輪最終各部位的基本尺寸\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{直齒輪8}
+		\caption{\Large 直齒輪幾何參數}\label{2.23}
+		\end{center}
+		\end{figure}
+		\\
+		建立模型(圖.\ref{2.24})\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{正齒輪模型}
+		\caption{\Large 直齒輪模型}\label{2.24}
+		\end{center}
+		\end{figure}
+		\\
+		
+\newpage
+		
+	\item 錐齒輪設計器(圖.\ref{2.25}) :\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{錐齒輪1}
+		\caption{\Large 錐齒輪設計器}\label{2.25}
+		\end{center}
+		\end{figure}
+		\\
+		選項(圖.\ref{2.26}) :\\
+		能調整要計算的分析選項及結果\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=8cm]{錐齒輪2}
+		\caption{\Large 設計參數選項}\label{2.26}
+		\end{center}
+		\end{figure}
+		\\
+		材質(圖.\ref{2.27}) :\\
+		材質的設定\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=6cm]{錐齒輪3}
+		\caption{\Large 設計參數選項}\label{2.27}
+		\end{center}
+		\end{figure}
+		\\
+		計算(圖.\ref{2.28}) :\\
+		設計計算後的分析結果\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{錐齒輪4}
+		\caption{\Large 設計參數選項}\label{2.28}
+		\end{center}
+		\end{figure}
+		\\
+		計算出的幾何參數(圖.\ref{2.29}) :\\
+		根據設計參數所生成之錐齒輪的各細項尺寸\\
+		\begin{figure}[hbt!]
+		\begin{center}
+		\includegraphics[width=12cm]{錐齒輪5}
+		\caption{\Large 設計參數選項}\label{2.29}
+		\end{center}
+		\end{figure}
+		\\
+
+
+
 \subsection{損失函數}
 損失函數是類神經網路的另一個重要的部分，損失函數會將類神經網絡的結果與期望結果進行比較，且必須重複估算模型當前狀態的誤差；該函數可用於估計模型的損失，以便可以更新權重減少下次評估時的損失，下一節會有詳細說明，以下簡述幾種優化的方法：\\
 \begin{itemize}
