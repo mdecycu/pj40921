@@ -1,14 +1,145 @@
-\chapter{訓練環境}
-\section{OpenAI Gym}
- Gym 是用於開發和比較強化學習算法的工具包，他不對agent的結構做任何假設，並且與任何數據計算庫兼容，而可以用來制定強化學習的算法。這個環境具有共享的介面，使我們能用來編寫常規算法，也就能教導agents如何步行到玩遊戲。\\[6pt]
-
-\section{Pong}
- 取自 1977年發行的一款家用遊戲機ATARI 2600中的遊戲，內建於Gym，這是一個橫向的乒乓遊戲，左方是預設電腦玩家，右邊由使用者或是由訓練程式控制(圖.\ref{fig.pong})。在強化學習範例中，Pong與實體冰球機簡化後環境相似。\\
+\chapter{案例研究}
+\section{Solid Edge 應用範例}
+\section{Femap應用範例}
+\begin{itemize}
+\item 過程模擬(圖\ref{3.02})\\
 \begin{figure}[hbt!]
 \begin{center}
-\includegraphics[height=8cm]{pong_gym}
-\caption{\Large ATARI Pong}\label{fig.pong}
+\includegraphics[width=14cm]{Femap1}
+\caption{\Large 同步建模方向盤}\label{3.02}
 \end{center}
-\end{figure} 
+\end{figure}
+\\
+\qquad 由上圖可知Femap的簡約分析設定過程，大致上能分成四大步驟:\\
 
+1.幾何導入和準備\\
+\qquad 將建立好的模型輸入到Femap裡，進行清理的動作，讓下一階段的預處理方便執行。\\
+\qquad Femap可以不須轉檔，就能直接讀取SolidWorks、Solid Edge、Autodesk...等知名繪圖軟體的繪圖檔，也能透過STEP、IGES、DXF...等檔案輸入進行分析。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap2}
+\caption{\Large Femap Simulation Process}\label{3.03}
+\end{center}
+\end{figure}
+\\
+\qquad 以機械手臂的零組件為例，完成模型幾何的輸入後，使用各種清理命令清理幾何圖形，以便為進一步的後處理做好先前準備。\\
+
+\qquad 由圖\ref{3.01}為例，能用Geomotry的Cleanup指令來清理模型上的線架構，將一段分成多段的線直接合併成一段，讓進一步的網格化個好處理。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=14cm]{Femap3}
+\caption{\Large Femap Cleanup}\label{3.01}
+\end{center}
+\end{figure}
+\\
+2.預處理屬性和邊界條件\\
+\qquad 材料及屬性的設定，完成後就能進行力與約束的設置。\\
+
+\qquad 材料的輸入能在左側Model下的Materials進行設定，對其左鍵增加新的材料選擇，在圖\ref{3.04}中能看到材料的多樣性，有用不完的材料能夠分析。\\
+\qquad 完成後，在Properties裡新增模型的屬性，將新增好的材料加入到其中，讓模型屬性裡頭使用所選的材料。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap4}
+\caption{\Large Femap材料選擇}\label{3.04}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=10cm]{Femap8}
+\caption{\Large Femap材料選擇}\label{3.05}
+\end{center}
+\end{figure}
+\\
+\qquad 接下來設置作用力與約束條件，Loads裡新增一個力量，在設定裡面，除了力的大小、範圍及位置外，也能調整力的角度，來滿足斜於受立面的力量設定。(圖\ref{3.05}~圖\ref{3.07})\\
+\qquad 而約束條件與作用力設定模式差不多，同樣是左側Constraints新增約束項目，然後進行範圍及模式的設定。(圖\ref{3.08}、圖\ref{3.09})\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap5}
+\caption{\Large Femap作用力設定}\label{3.05}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap6}
+\caption{\Large Femap作用力設定}\label{3.06}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap7}
+\caption{\Large Femap作用力設定}\label{3.07}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap8}
+\caption{\Large Femap約束條件設定}\label{3.08}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=10cm]{Femap9}
+\caption{\Large Femap約束條件設定}\label{3.09}
+\end{center}
+\end{figure}
+\\
+3. 網格劃分和分析設置\\
+\qquad 對幾何體進行網格劃分以創建有限元模型。然後將使用Femap分析集管理器設置分析參數。現在可以將模型提交給 NX Nastran 求解器。\\
+
+\qquad 左側Geometry>模型>Tet Mesh裡，可以對Element Size即跟Mesh sizing相關的其他係數進行更改，這對網格化後的網格大小有關。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=10cm]{Femap10}
+\caption{\Large Femap Mash Sizing}\label{3.10}
+\end{center}
+\end{figure}
+\\
+\qquad 接下來進行分析設置，Analyses>Manage新增想要分析的類型(圖\ref{3.11})，並確認設定的作用力及約束條件是否加入到分析內容中(圖\ref{3.12})，檢查完後按下分析後，Femap就會對你所設的條件來對模型做分析。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=10cm]{Femap11}
+\caption{\Large Femap Analysis Set}\label{3.11}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=10cm]{Femap12}
+\caption{\Large Femap Analysis Set}\label{3.12}
+\end{center}
+\end{figure}
+\\
+4.後處理和結果審查\\
+\qquad 查看NX Nastran計算的結果以及使用後處理工具箱在Femap中對數據進行後處理。\\
+
+\qquad 先在圖\ref{3.13}所標示的紅色位置叫出PostProcessing Toolbox，選擇想要觀看的分析結果，如果覺得變化不大，不易觀察的話，也能在此頁面中增加變化的倍率(圖\ref{3.14})，還能有變化的動畫能觀看，讓我們能更直覺地觀察變化量(圖\ref{3.15})。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap13}
+\caption{\Large Femap Deformed}\label{3.13}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap14}
+\caption{\Large Femap Contour}\label{3.14}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{Femap15}
+\caption{\Large Femap Animate}\label{3.15}
+\end{center}
+\end{figure}
+\\
+\end{itemize}
+
+\section{Solid Edge與Femap在生成式機械設計上的應用範例}
 \newpage
