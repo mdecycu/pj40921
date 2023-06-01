@@ -15,6 +15,7 @@
 \end{center}
 \end{figure}
 \\
+
 我們在需要建模的草圖上(圖\ref{3.21})，只需要透過滑鼠的移動就能很快的建立外型，只要點選需要的面向上(拉伸)或向下(除料)拖移即可建立特徵，如圖\ref{3.22}(拉伸 )與圖\ref{3.23}(除料)所示。\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -37,6 +38,8 @@
 \end{center}
 \end{figure}
 \\
+
+
 建完模後，不需再調整其他模型，因為同步建模的關係，會自動移動其他零件，不需要害怕會干擾到其他零件或特徵，減少了需要再設定特徵或約束關係的時間(圖\ref{3.24})；零件上色也非常方便且迅速，透過滑鼠拖移的動作即可完成(圖\ref{3.25})。\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -52,6 +55,7 @@
 \end{center}
 \end{figure}
 \\
+
 在 Solid Edge 2023 中，Extras > “Visual explode”選項卡中有新命令用於裝配體的分解視圖。這些可以幫助您在現場快速了解裝配體的結構，而無需事先創建和保存耗時的爆炸。您可以使用簡單的滑塊分解裝配體，或智能地逐步分解子裝配體。(圖\ref{3.26})\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -76,7 +80,9 @@
 \qquad 由上圖可知Femap的簡約分析設定過程，大致上能分成四大步驟:\\
 
 1.幾何導入和準備\\
+
 \qquad 將建立好的模型輸入到Femap裡，進行清理的動作，讓下一階段的預處理方便執行。\\
+
 \qquad Femap可以不須轉檔，就能直接讀取SolidWorks、Solid Edge、Autodesk...等知名繪圖軟體的繪圖檔，也能透過STEP、IGES、DXF...等檔案輸入進行分析。\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -85,6 +91,7 @@
 \end{center}
 \end{figure}
 \\
+
 \qquad 以機械手臂的零組件為例，完成模型幾何的輸入後，使用各種清理命令清理幾何圖形，以便為進一步的後處理做好先前準備。\\
 
 \qquad 由圖\ref{3.01}為例，能用Geomotry的Cleanup指令來清理模型上的線架構，將一段分成多段的線直接合併成一段，讓進一步的網格化個好處理。\\
@@ -96,9 +103,11 @@
 \end{figure}
 \\
 2.預處理屬性和邊界條件\\
+
 \qquad 材料及屬性的設定，完成後就能進行力與約束的設置。\\
 
 \qquad 材料的輸入能在左側Model下的Materials進行設定，對其左鍵增加新的材料選擇，在圖\ref{3.04}中能看到材料的多樣性，有用不完的材料能夠分析。\\
+
 \qquad 完成後，在Properties裡新增模型的屬性，將新增好的材料加入到其中，讓模型屬性裡頭使用所選的材料。\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -114,7 +123,9 @@
 \end{center}
 \end{figure}
 \\
+
 \qquad 接下來設置作用力與約束條件，Loads裡新增一個力量，在設定裡面，除了力的大小、範圍及位置外，也能調整力的角度，來滿足斜於受立面的力量設定。(圖\ref{3.05}~圖\ref{3.07})\\
+
 \qquad 而約束條件與作用力設定模式差不多，同樣是左側Constraints新增約束項目，然後進行範圍及模式的設定。(圖\ref{3.08}、圖\ref{3.09})\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -152,6 +163,7 @@
 \end{figure}
 \\
 3. 網格劃分和分析設置\\
+
 \qquad 對幾何體進行網格劃分以創建有限元模型。然後將使用Femap分析集管理器設置分析參數。現在可以將模型提交給 NX Nastran 求解器。\\
 
 \qquad 左側Geometry>模型>Tet Mesh裡，可以對Element Size即跟Mesh sizing相關的其他係數進行更改，這對網格化後的網格大小有關。\\
@@ -162,6 +174,7 @@
 \end{center}
 \end{figure}
 \\
+
 \qquad 接下來進行分析設置，Analyses>Manage新增想要分析的類型(圖\ref{3.11})，並確認設定的作用力及約束條件是否加入到分析內容中(圖\ref{3.12})，檢查完後按下分析後，Femap就會對你所設的條件來對模型做分析。\\
 \begin{figure}[hbt!]
 \begin{center}
@@ -178,6 +191,7 @@
 \end{figure}
 \\
 4.後處理和結果審查\\
+
 \qquad 查看NX Nastran計算的結果以及使用後處理工具箱在Femap中對數據進行後處理。\\
 
 \qquad 先在圖\ref{3.13}所標示的紅色位置叫出PostProcessing Toolbox，選擇想要觀看的分析結果，如果覺得變化不大，不易觀察的話，也能在此頁面中增加變化的倍率(圖\ref{3.14})，還能有變化的動畫能觀看，讓我們能更直覺地觀察變化量(圖\ref{3.15})。\\
@@ -205,16 +219,53 @@
 \end{itemize}
 
 \section{Solid Edge與Femap在生成式機械設計上的應用範例}
+生成式設計用於優化產品中材料的重量和使用，以下範例為滾輪支撐架做衍生式設計(圖\ref{3.16})。\\
 
+在 Solid Edge 2023 中，您現在可以在設置載荷和邊界條件後定義曲面上給定點的最大位移。這可確保模型在給定方向上保持正確的剛度。\\
 
+還可以設置對稱平面，以優化模型中的兩個或三個正交平面。這樣可以確保優化後的模型最終盡可能對稱。\\
 
+點擊Generative完成設定後，就能馬上生成新的設計，在剛性不變或增加的情況下，同時減輕了模型的重量。(圖\ref{3.17})\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=8cm]{衍生式設計1}
+\caption{\Large Femap Generative Design}\label{3.16}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=8cm]{衍生式設計2}
+\caption{\Large Femap Generative Design}\label{3.17}
+\end{center}
+\end{figure}
+\\
 
+“顯示壓力”選項可為您提供有關壓力高度集中區域的直接反饋，讓您有機會在必要時立即進行更正。最終，優化的創成式設計是一種獨特的混合模型，結合了 B-rep 和小平面幾何，可直接用於增材製造。然後，您可以使用結構仿真分析這些混合模型，並檢查結果是否符合您的設計研究(圖\ref{3.18})。\\
 
+在零件、裝配體和鈑金環境中，Solid Edge 2023 具有新的小平面體選項，允許您定義參數以微調網格幾何形狀（例如圓周圍的點數）。\\
 
-
-
-
-
+生成完後，能馬上更改負荷大小，做各種重量下的分析，來觀察此設計是否達到預想的效果(圖\ref{3.19})。\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{衍生式設計3}
+\caption{\Large Femap Generative Design}\label{3.18}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{衍生式設計4}
+\caption{\Large Femap Generative Design}\label{3.19}
+\end{center}
+\end{figure}
+\\
+\begin{figure}[hbt!]
+\begin{center}
+\includegraphics[width=12cm]{衍生式設計5}
+\end{center}
+\end{figure}
+\\
 
 
 
